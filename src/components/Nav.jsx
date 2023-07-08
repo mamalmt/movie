@@ -1,15 +1,10 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link,useLocation } from "react-router-dom";
+
 
 function Nav() {
-  const [textColor, setTextColor] = useState("black");
-  const handemovcliked = () => {
-    if (textColor === "black") {
-      setTextColor("red");
-    } else {
-      setTextColor("black");
-    }
-  };
+const[color,setcolor] =useState("#000000c9");
+const location= useLocation();
 
   return (
     <>
@@ -20,17 +15,17 @@ function Nav() {
           </div>
           <div className=" ">
             <ul className="flex  gap-16 text-xl font-medium text-rose-500 ">
-              <li className="font-ShantellSans font-black text-3xl  text-[#000000c9]">
-                <button onClick={handemovcliked} >
-                  <Link to="/">Home</Link>
+              <li className="font-ShantellSans font-black text-3xl text-[#000000c9]">
+                <button >
+                  <Link to="/" style={{color:location.pathname === '/' ? '#ff1111':'#000000c9'}}>Home</Link>
                 </button>
               </li>
               <li className="font-ShantellSans font-black text-3xl   text-[#000000c9]">
-                <Link to="/about">About</Link>
+                <Link to="/about" style={{color:location.pathname === '/about' ? '#ff1111':'#000000c9'}} >About</Link>
               </li>
               <li className="font-ShantellSans font-black text-3xl  text-[#000000c9]">
-                <button onClick={handemovcliked} style={{ color: textColor }}>
-                  <Link to="/movies">movies</Link>
+                <button >
+                  <Link to="/movies"  style={{color:location.pathname === '/movies' ? '#ff1111':'#000000c9'}}>movies</Link>
                 </button>
               </li>
             </ul>
